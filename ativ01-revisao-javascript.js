@@ -1,4 +1,6 @@
 /*
+    Aluno: João Paulo Fernandes Rodrigues
+    3°ADS - Matutino
 
    DADOS PARA O EXERCÍCIO
 
@@ -89,12 +91,13 @@ let estado9 = {
 estadosNe.push(estado2, estado3, estado4, estado5)
 estadosNe.push(estado6, estado7, estado8, estado9)
 
-console.log(estadosNe)
+//console.log(estadosNe)
 /*
    2) Escreva uma arrow function que receba dois parâmetros, área e população, e
       calcule a densidade demográfica retornando o resultado da divisão da
       segunda pela primeira. 
 */
+let densidadeDemografica = (x, y) => x / y
 
 /*
    3) Percorra o vetor estadosNe usando um for tradicional. Para cada estado,
@@ -105,18 +108,35 @@ console.log(estadosNe)
       Durante este mesmo loop, elimine a propriedade 'sigla' dos objetos.
 
 */
-
+    for(let i = 0; i < 9; i++){
+        estadosNe[i]['densidade demográfica'] = (densidadeDemografica(estadosNe[i].populacao,estadosNe[i].area))
+        delete estadosNe[i].sigla
+    }
+   // console.log(estadosNe)
 /* 4) Escreva uma arrow function que receba um objeto. Na função, use for..in
       para extrair as propriedades e seus valores e exibi-los com console.log().
 
 */
+    let f = (objeto) => {
+        for(i in objeto){
+            console.log(i, objeto[i])
+        }
+    }
 
 /* 5) Percorra o vetor estadosNe usando for..of. Para cada objeto no vetor,
       invoque a função escrita em 4) para exibi-lo.
 
+*/ 
+ for(let i of estadosNe){
+     f(i)
+ }
 /*
+
    6)
       a) Declare um vetor vazio.
+*/
+    let vetor = []
+/*
       b) Insira no vetor criado no item a) apenas o nome de cada Estado, conforme
          os dados no topo deste arquivo, um de cada vez. Faça as inserções de 
          modo que o vetor final esteja em ordem alfabética. No caso, o primeiro 
@@ -126,3 +146,13 @@ console.log(estadosNe)
          já existentes, e assim por diante.
 
 */
+        vetor.push(estadosNe[0].nome)
+        vetor.unshift(estadosNe[1].nome)
+        vetor.splice(1, 0, estadosNe[2].nome)
+        vetor.splice(1, 0, estadosNe[3].nome)
+        vetor.splice(2,0, estadosNe[4].nome)
+        vetor.splice(1,0,estadosNe[5].nome)
+        vetor.splice(4,0,estadosNe[6].nome)
+        vetor.splice(2,0,estadosNe[7].nome)
+        vetor.splice(1,0,estadosNe[8].nome)
+        console.log(vetor)
