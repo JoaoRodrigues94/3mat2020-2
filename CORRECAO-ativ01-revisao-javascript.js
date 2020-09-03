@@ -1,6 +1,4 @@
 /*
-    Aluno: João Paulo Fernandes Rodrigues
-    3°ADS - Matutino
 
    DADOS PARA O EXERCÍCIO
 
@@ -29,22 +27,27 @@ let estado1 = {
 estadosNe.push(estado1)
 
 /*
-   1) Crie objetos para os demais Estados, seguindo o modelo acima, e acrescente-os
+   1) Crie objetos para os demais Estados, segundo o modelo acima, e acrescente-os
       ao vetor estadosNe usando push().
 */
+
 let estado2 = {
    nome: 'Alagoas',
    sigla: 'AL',
    area: 27848.14,
-   populacao: 3322820 
+   populacao: 3322820
 }
 
+estadosNe.push(estado2)
+
 let estado3 = {
-   nome: "Rio Grande do Norte",
+   nome: 'Rio Grande do Norte',
    sigla: 'RN',
    area: 52811.05,
    populacao: 3479010
 }
+
+estadosNe.push(estado3)
 
 let estado4 = {
    nome: 'Paraíba',
@@ -53,12 +56,17 @@ let estado4 = {
    populacao: 3996496
 }
 
+estadosNe.push(estado4)
+
+
 let estado5 = {
    nome: 'Pernambuco',
    sigla: 'PE',
    area: 98148.32,
    populacao: 9496294
 }
+
+estadosNe.push(estado5)
 
 let estado6 = {
    nome: 'Ceará',
@@ -67,12 +75,16 @@ let estado6 = {
    populacao: 9075649
 }
 
+estadosNe.push(estado6)
+
 let estado7 = {
    nome: 'Piauí',
    sigla: 'PI',
    area: 251577.74,
    populacao: 3264531
 }
+
+estadosNe.push(estado7)
 
 let estado8 = {
    nome: 'Maranhão',
@@ -81,23 +93,29 @@ let estado8 = {
    populacao: 7035055
 }
 
+estadosNe.push(estado8)
+
 let estado9 = {
    nome: 'Bahia',
    sigla: 'BA',
    area: 564733.18,
    populacao: 14812617
 }
- 
-estadosNe.push(estado2, estado3, estado4, estado5)
-estadosNe.push(estado6, estado7, estado8, estado9)
 
-//console.log(estadosNe)
+estadosNe.push(estado9)
+
+// Exibindo o vetor para verificar se está tudo certo
+console.log(estadosNe)
+
 /*
    2) Escreva uma arrow function que receba dois parâmetros, área e população, e
       calcule a densidade demográfica retornando o resultado da divisão da
       segunda pela primeira. 
 */
-const densidadeDemografica = (x, y) => x / y
+
+// Usei const aqui porque densidadeDemog deve receber um valor inicial
+// e esse valor não será mais alterado
+const densidadeDemog = (area, pop) => pop / area
 
 /*
    3) Percorra o vetor estadosNe usando um for tradicional. Para cada estado,
@@ -108,35 +126,43 @@ const densidadeDemografica = (x, y) => x / y
       Durante este mesmo loop, elimine a propriedade 'sigla' dos objetos.
 
 */
-    for(let i = 0; i < estadosNe.length; i++){
-        estadosNe[i]['densidade demográfica'] = (densidadeDemografica(estadosNe[i].area,estadosNe[i].populacao))
-        delete estadosNe[i].sigla
-    }
-   // console.log(estadosNe)
+
+for(let i = 0; i < estadosNe.length; i++) {
+   // Acrescentando a nova propriedade "densidade demográfica".
+   // O nome contém duas palavras, então a sintaxe de colchetes é obrigatória.
+   estadosNe[i]['densidade demográfica'] = densidadeDemog(estadosNe[i].area, estadosNe[i].populacao)
+
+   // Excluindo a propriedade "sigla"
+   delete estadosNe[i].sigla
+}
+
 /* 4) Escreva uma arrow function que receba um objeto. Na função, use for..in
       para extrair as propriedades e seus valores e exibi-los com console.log().
 
 */
-    let f = (objeto) => {
-        for(i in objeto){
-            console.log(i, objeto[i])
-        }
-    }
+
+const listaEstado = estado => {
+   for(let prop in estado) {
+      console.log(`${prop} => ${estado[prop]}`)
+   }
+}
 
 /* 5) Percorra o vetor estadosNe usando for..of. Para cada objeto no vetor,
       invoque a função escrita em 4) para exibi-lo.
+*/
 
-*/ 
- for(let i of estadosNe){
-     f(i)
- }
+// Traço separador
+console.log('-----------------------------------------------')
+
+for(let est of estadosNe) {
+   listaEstado(est)
+   // Traço separador
+   console.log('-----------------------------------------------')
+}
+
 /*
-
    6)
       a) Declare um vetor vazio.
-*/
-    let vetor = []
-/*
       b) Insira no vetor criado no item a) apenas o nome de cada Estado, conforme
          os dados no topo deste arquivo, um de cada vez. Faça as inserções de 
          modo que o vetor final esteja em ordem alfabética. No caso, o primeiro 
@@ -146,13 +172,37 @@ const densidadeDemografica = (x, y) => x / y
          já existentes, e assim por diante.
 
 */
-        vetor.push(estadosNe[0].nome)
-        vetor.unshift(estadosNe[1].nome)
-        vetor.splice(1, 0, estadosNe[2].nome)
-        vetor.splice(1, 0, estadosNe[3].nome)
-        vetor.splice(2,0, estadosNe[4].nome)
-        vetor.splice(1,0,estadosNe[5].nome)
-        vetor.splice(4,0,estadosNe[6].nome)
-        vetor.splice(2,0,estadosNe[7].nome)
-        vetor.splice(1,0,estadosNe[8].nome)
-        console.log(vetor)
+
+let nomesUf = []
+
+// Sergipe => pode ser adicionado com push(), visto que o vetor está vazio
+nomesUf.push('Sergipe')
+
+// Alagoas => deve ser inserido com unshift() para vir antes de Alagoas
+nomesUf.unshift('Alagoas')
+
+// Rio Grande do Norte => com splice(), entre os dois já existentes
+nomesUf.splice(1, 0, 'Rio Grande do Norte')
+
+// Paraíba => com splice(), antes de RN
+nomesUf.splice(2, 0, 'Paraíba')
+
+// Pernambuco => com splice(), antes de SE
+nomesUf.splice(3, 0, 'Pernambuco')
+
+// Ceará => com splice(), antes de RN
+nomesUf.splice(1, 0, 'Ceará')
+
+// Piauí => com splice(), antes de SE
+nomesUf.splice(5, 0, 'Piauí')
+
+// Maranhão => com splice(), antes de RN
+nomesUf.splice(2, 0, 'Maranhão')
+
+// Bahia => com splice(), antes de CE
+nomesUf.splice(1, 0, 'Bahia')
+
+// Traço separador
+console.log('***********************************************')
+
+console.log(nomesUf)
