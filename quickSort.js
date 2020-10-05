@@ -1,7 +1,7 @@
 function quickSort(vetor){
     let inicio = 0
     let fim = vetor.length - 2 // Penultima posição
-    let posPivot = vetor.lenth - 1
+    let posPivot = vetor.length - 1
     let posDiv = inicio -1
     for(let i = inicio; i <= fim; i++){
         if(vetor[i] < vetor[posPivot]) {
