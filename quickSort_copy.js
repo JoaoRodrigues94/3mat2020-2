@@ -1,5 +1,12 @@
 let passadas = 0, comparacoes = 0, trocas = 0
-function quickSort(vetor, inicio = 0, fim = vetor.length-1){
+/*
+fnComp -> função de comparação
+Recebe dois valores para comparação
+Retorna:
+    -true, se o PRIMEIRO valor for MAIOR que o segundo
+    -false, caso contrario
+*/
+function quickSort(vetor, fnComp, inicio = 0, fim = vetor.length-1){
     console.log({vetor, inicio, fim})
     //let inicio = 0
     //let fim = vetor.length - 2 // Penultima posição
@@ -9,9 +16,10 @@ function quickSort(vetor, inicio = 0, fim = vetor.length-1){
         let posPivot = fim //Ultima posição
         let posDiv = inicio -1
         //for(let i = inicio; i <= fim; i++){
-        comparacoes++
         for(let i = inicio; i < fim; i++){  
-            if(vetor[i] < vetor[posPivot]) {
+            comparacoes++
+            //if(vetor[i] < vetor[posPivot]) {
+                if(fnComp(vetor[i] < vetor[posPivot])) {
                 posDiv++
                 [vetor[i], vetor[posDiv]] = [vetor[posDiv], vetor[i]]
                 trocas++
@@ -24,8 +32,8 @@ function quickSort(vetor, inicio = 0, fim = vetor.length-1){
         console.log(posDiv)
 
         //Chamadas recursivas no Quick-Sort
-        quickSort(vetor, inicio. posDiv-1)  //Lado esquerdo
-        quickSort(vetor, posDiv+1, fim)    //Lado direito
+        quickSort(vetor, fnComp, inicio. posDiv-1)  //Lado esquerdo
+        quickSort(vetor, fnComp, posDiv+1, fim)    //Lado direito
     }
 }
 
