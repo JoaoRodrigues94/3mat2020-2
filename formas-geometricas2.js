@@ -9,7 +9,7 @@ class FormaGeometrica {
             throw new Error('A altura deve ser maior que zero')
         }
 
-        if(! (['R','T', 'E'].indexOf(tipo) > 0)) {
+        if(! (['R','T', 'E'].indexOf(tipo) < 0)) {
             throw new Error('O tipo de forma geométrica deve ser R, T ou E.')
         }
         this.base = base
