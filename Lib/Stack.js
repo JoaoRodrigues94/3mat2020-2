@@ -1,3 +1,11 @@
+/*
+    Estrutura de dados pilha
+    Inserção e remoções sempre no final da estrutura
+    seu funcionamento pode ser resultado pela seigla LIFO
+    (Last In, First Out) = Último a entrar, primeiro a sair
+*/
+
+
 module.exports = class Stack {
     constructor() {
         this.data = [] // Armazenamento
